@@ -1,0 +1,2 @@
+
+((:TITLE "Devil went down to Georgia" :ARTIST "Charle Daniels Band" :RATING 8 :RIPPED T) (:TITLE "Stairway to Heaven" :ARTIST "Led Zep" :RATING 8 :RIPPED NIL) (:TITLE "Good bye, Pork Pie Hat" :ARTIST "Charles Mingus" :RATING 8 :RIPPED NIL)) 
