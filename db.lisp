@@ -1,19 +1,27 @@
 
+;; define a global to hold the db while we operate on it
 (defvar *db* nil)
 
+;; helper to return a plist from inputs
 (defun make-cd (title artist rating ripped)
   (list :title title :artist artist :rating rating :ripped ripped))
 
+;;
+;; build record objects
 (defun add-record (cd) (push cd *db*))
 
 ;;
 ;; sample data
 ;; (add-record (make-cd "Devil went down to Georgia" "Charlie Daniels Band" 8 t))
 
+;;
+;; pretty print the db
 (defun dump-db ()
   (dolist (cd *db*)
     (format t "~{~a:~10t~a~%~}~%" cd)))
 
+;;
+;; save the db (as s-expressions) to a file
 (defun save-db (filename)
   (with-open-file (out filename
                        :direction :output
@@ -21,6 +29,8 @@
     (with-standard-io-syntax
       (print *db* out))))
 
+;;
+;; load the db from a file (note: filename is absolute path)
 (defun load-db (filename)
   (with-open-file (in filename)
     (with-standard-io-syntax
