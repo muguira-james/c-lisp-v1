@@ -68,11 +68,6 @@
 
 
 ;;
-;; test function 
-(defun main ()
-  (format t "learning lisp..."))
-
-;;
 ;; =============================== handle the hash and nodes in the hash ============================
 ;;
 ;; define a network hash for the program
@@ -239,3 +234,14 @@
           )
     ))
   
+;;
+;; ================================== test driver =================================
+;;
+;; test function 
+(defun main ()
+  (progn
+    (format t "learning lisp...")
+    (setf que '(s))
+    (setf visit nil)
+    (dd))
+  )
