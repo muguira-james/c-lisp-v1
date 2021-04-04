@@ -5,12 +5,15 @@
 ;; create a depth and breadth first search
 ;;
 ;; packaging
-(defpackage #:lrn
-    (:use  #:cl 
-     ))
+(defpackage :lrn
+  (:use  #:cl )
+  (:export :main
+   :dd
+           :que
+   :visit))
 
 
-(in-package #:lrn)
+(in-package :lrn)
 
 
 ;;
