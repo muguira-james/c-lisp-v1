@@ -83,3 +83,6 @@
     ))
 
 
+;;
+;; how to run this
+;; (simulate-event 0 *start)
