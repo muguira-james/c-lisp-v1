@@ -109,7 +109,11 @@
 
 ;;
 ;; how to run this
-;; (simulate-event 0 *start)
+;;
+;; first (ql:quickload "simulation")
+;; 2nd: (in-package :simulation)
+;; 3rd: exec (ctl-x xtl-e the "let" statement
+;; 4th: (simulate *start*  0)
 
 (defun simulate (starting-event time)
   (setf *event-sequence* nil)
