@@ -54,6 +54,9 @@
   (connect m e7 (list e5 e6))
   'done)
 
+
+;;
+;; -- event handlers --
 (defun simulate-event (time event)
   (setf (event-time event) time)
   (dolist (output-task (event-output-tasks event))
@@ -73,16 +76,45 @@
 (defun announce-finish-time (time name)
   (format t "~%Time ~a:~9tfinishing~19t~a." time name))
 
+(defvar *event-sequence* nil)
+
+(defun add-to-event-sequence (form)
+  (setf *event-sequence*
+        (sort (cons form *event-sequence*)
+              #'earlier-first-p)))
+
+(defun earlier-first-p (x y)
+  (cond ((<  (second x) (second y)) t)
+        ((= (second x) (second y))
+         (cond ((eq 'announce-finish-time (first x)) t)
+               ((eq 'announce-finish-time (first y)) nil)
+               ((eq 'simulate-event (first x))  t)
+               ((eq 'simulate-event (first y)) nil)))))
+
+
+;;
+;; - task handlers --
+
 (defun simulate-task (task)
   (when (event-times-known-p (task-input-events task))
     (let* ((start-time (lastest-time (task-input-events task)))
            (finish-time (+ (task-duration task) start-time)))
-      (announce-start-time start-time (task-name task))
-      (announce-finish-time finish-time (task-name task))
-      (simulate-event finish-time (task-output-event task)))
-    ))
+      (add-to-event-sequence
+       `(announce-start-time ,start-time ',(task-name task)))
+      (add-to-event-sequence
+       `(announce-finish-time ,finish-time ',(task-name task)))
+      (add-to-event-sequence
+       `(simulate-event ,finish-time ,(task-output-event task))))))
 
 
 ;;
 ;; how to run this
 ;; (simulate-event 0 *start)
+
+(defun simulate (starting-event time)
+  (setf *event-sequence* nil)
+  (simulate-event time starting-event)
+  (loop
+    (if (endp *event-sequence*)
+        (return 'done)
+        (eval (pop *event-sequence*)))))
