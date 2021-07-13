@@ -1,3 +1,8 @@
+;;
+;; a simulation package
+;;
+;; from Winson & Horn lisp
+
 (defpackage simulation
   (:use :cl))
 (in-package :simulation)
