@@ -16,7 +16,7 @@ To run this from sbcl:
 The package is called :lrn (from the top of the file). The 'in-package :lrn' statement brings your variables
 into view. The function 'main' is the test function.
 
-The Dockerfile now works ! 
+The Dockerfile now works ! I should use a staged build so I can create the executable lisp file and only load that in the final image.
 
 Docker build -t lrn .
 Docker run -it lrn
