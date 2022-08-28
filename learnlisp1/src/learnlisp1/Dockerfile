@@ -5,6 +5,6 @@ copy learnlisp1.lisp /app
 COPY sbcl.run /app
 COPY sbcl.compile /app
 RUN chmod +x sbcl.compile
-CMD ["./sbcl.compile", "learnlisp1.lisp"]
+RUN ["./sbcl.compile", "learnlisp1.lisp"]
 RUN chmod +x sbcl.run
 CMD ["./sbcl.run", "./learnlisp1.fasl"]
