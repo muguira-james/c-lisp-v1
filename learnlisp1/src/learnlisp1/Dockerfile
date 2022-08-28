@@ -1,4 +1,4 @@
 from ubuntu
 workdir /app
 copy ./lrn /app
-run ./lrn
+CMD ["source", "sbcl.run", "learnlisp1.fasl"]
