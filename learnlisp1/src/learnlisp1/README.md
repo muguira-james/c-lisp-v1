@@ -14,7 +14,8 @@ To run this from sbcl:
 * (main)
 
 The package is called :lrn (from the top of the file). The 'in-package :lrn' statement brings your variables
-into view. The function 'main' is the test function.
+into view. The function 'main' is the test function. The lisp file was updated to allow running in a container. The very last
+line in the file is '(main)'. This runs the test. You will notice that the search runs as you load the file into sbcl.
 
 The Dockerfile now works ! I should use a staged build so I can create the executable lisp file and only load that in the final image.
 
