@@ -1,7 +1,7 @@
 from ubuntu
 RUN apt-get update && apt-get install -y sbcl
 workdir /app
-copy learnlisp1.fasl /app
+copy learnlisp1.lisp /app
 COPY sbcl.run /app
 COPY sbcl.compile /app
 RUN chmod +x sbcl.compile
