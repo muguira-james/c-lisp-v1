@@ -248,3 +248,4 @@
     (setf visit nil)
     (dd))
   )
+(main)
