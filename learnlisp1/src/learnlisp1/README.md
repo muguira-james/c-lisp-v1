@@ -5,5 +5,16 @@ The program shows howto:
 * handle a queue using an external lisp queue
 * perform either a depth or breadth first search
 
+To run this from sbcl:
+
+* cd to the src directory
+* sbcl --load learnlisp1.lsp
+* At this point you've loaded and compiled the file into the env. You are sitting at a lisp repl prompt.
+* (in-package :lrn)
+* (main)
+
+The package is called :lrn (from the top of the file). The 'in-package :lrn' statement brings your variables
+into view. The function 'main' is the test function.
+
 The Dockerfile is broken - it assume you have compiled the lisp source and generated an executable
 
