@@ -1,5 +1,8 @@
-;; This buffer is for text that is not saved, and for Lisp evaluation.
-;; To create a file, visit it with C-x C-f and enter text in its buffer.
+;; impl of search
+;;
+;; sbcl --load search.lisp
+;; (in-package :jsearch)
+;; to use try: (depth-first 's 'g)
 
 (defpackage :jsearch
   (:use :common-lisp))
